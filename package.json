@@ -1,0 +1,37 @@
+{
+  "name": "t-date-picker",
+  "version": "1.0.0",
+  "description": "React date picker",
+  "main": "./build/bundle.js",
+  "scripts": {
+    "test": "jest",
+    "build": "rollup -c",
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricTurf/t-date-picker.git"
+  },
+  "keywords": [
+    "date-picker",
+    "react"
+  ],
+  "author": "ericturf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EricTurf/t-date-picker/issues"
+  },
+  "homepage": "https://github.com/EricTurf/t-date-picker#readme",
+  "devDependencies": {
+    "@storybook/react": "^3.4.7",
+    "babel-core": "6",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "jest": "^23.1.0",
+    "rollup-plugin-babel": "^3.0.4"
+  },
+  "dependencies": {
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  }
+}
