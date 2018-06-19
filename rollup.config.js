@@ -2,7 +2,7 @@ import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 
 export default {
-  input: './index.js',
+  input: './src/index.js',
   output: {
     file: './build/bundle.js',
     format: 'iife',
