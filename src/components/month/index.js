@@ -1,11 +1,18 @@
 import React from 'react';
 
+import Week from '../week';
+
 export default class Month extends React.Component {
   static defaultProps = { month: [] };
   parseMonth = () => {
     const { month } = this.props;
+    let parsedMonth = [];
 
-    return 'parsing';
+    for (let i = 0; i < month.length; i = i + 7) {
+      parsedMonth = [...parsedMonth, month.slice(i, i + 7)];
+    }
+
+    return parsedMonth.map(week => <Week key={week.join()} week={week} />);
   };
   render() {
     const { month } = this.props;

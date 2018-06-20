@@ -11,8 +11,8 @@ import getMonth from 'date-fns/get_month';
 import endOfWeek from 'date-fns/end_of_week';
 import differenceInDays from 'date-fns/difference_in_days';
 
-import Month from './month';
-import { first } from 'glamor';
+import Header from './components/header';
+import Month from './components/month';
 
 const weekdays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
@@ -31,20 +31,19 @@ const buildMonth = today => {
   return <Month month={month} />;
 };
 
-const getCurrentMonth = today => {
-  return <h2>{format(today, 'MMMM')}</h2>;
-};
-
 export default class DatePicker extends React.Component {
-  state = { today: addDays(Date.now(), 120) };
+  state = { today: Date.now() };
 
   render() {
     const { today } = this.state;
     return (
       <Wrapper>
-        {getCurrentMonth(today)}
+        <Header today={today} />
+
+        {/* <Calendar/> */}
         <WeekDayContainer>{weekdays.map(buildWeekday)}</WeekDayContainer>
         {buildMonth(today)}
+        {/* <TimePicker/> */}
       </Wrapper>
     );
   }
