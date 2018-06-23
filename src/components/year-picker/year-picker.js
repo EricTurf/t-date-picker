@@ -8,9 +8,6 @@ export default class YearPicker extends React.Component {
   buildOptions = () => {
     const { today } = this.props;
 
-    // const past = format(setYear(today, getYear(today) - 25), 'YYYY');
-    // const future = format(setYear(today, getYear(today) + 25), 'YYYY');
-
     const past = Array(25)
       .fill(0)
       .map((v, i) => (
@@ -28,6 +25,14 @@ export default class YearPicker extends React.Component {
   };
 
   render() {
-    return <select>{this.buildOptions()}</select>;
+    const { date } = this.props;
+    return (
+      <select
+        value={getYear(date)}
+        onChange={e => this.props.onYearChange(parseInt(e.target.value))}
+      >
+        {this.buildOptions()}
+      </select>
+    );
   }
 }

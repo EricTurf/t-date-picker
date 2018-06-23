@@ -1,13 +1,8 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 200px;
+export const StyledInput = styled.input`
+  min-width: 250px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
-export const WeekDayContainer = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-`;
-export const WeekDay = styled.div``;
