@@ -9,15 +9,23 @@ export default class ButtonBar extends React.Component {
 
   render() {
     return (
-      <Main>
+      <Main className={this.props.className}>
         <ButtonContainer>
-          {this.props.buttons.map(button => (
-            <StyledButton
-              key={button.label}
-              {...button}
-              active={this.props.mode === button.label.toUpperCase()}
-            />
-          ))}
+          {this.props.buttons.map(
+            button => (
+              console.log(this.props.mode === button.label.toUpperCase()),
+              (
+                <StyledButton
+                  className={this.props.className}
+                  key={button.label}
+                  {...button}
+                  color={'red'}
+                  activeColor="blue"
+                  active={this.props.mode === button.label.toUpperCase()}
+                />
+              )
+            )
+          )}
         </ButtonContainer>
       </Main>
     );

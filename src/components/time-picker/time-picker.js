@@ -5,11 +5,34 @@ import getHours from 'date-fns/get_hours';
 
 import { TimeSlider } from '../time-slider';
 
-import { Wrapper, Time, TimeContainer, Colon } from './time-picker.styled';
-import { isThisSecond } from 'date-fns';
+import {
+  Wrapper,
+  Time,
+  TimeContainer,
+  Colon,
+  ButtonContainer,
+  AMButton,
+  PMButton
+} from './time-picker.styled';
 
 export default class TimePicker extends React.Component {
-  state = { hour: getHours(Date.now()), minute: getMinutes(Date.now()) };
+  state = {
+    hour: getHours(Date.now()),
+    minute: getMinutes(Date.now()),
+    mode: null
+  };
+
+  componentDidMount() {
+    let hour = getHours(Date.now());
+    const minute = getMinutes(Date.now());
+    let mode = 'AM';
+    if (hour > 12) {
+      mode = 'PM';
+      hour = hour - 12;
+    }
+
+    this.setState({ hour, minute, mode });
+  }
 
   onChangeHandler = (key, { min, max }) => {
     return e => {
@@ -65,6 +88,10 @@ export default class TimePicker extends React.Component {
           min="00"
           max="60"
         />
+        <ButtonContainer>
+          <AMButton active={this.state.mode === 'AM'} label="AM" />
+          <PMButton active={this.state.mode === 'PM'} label="PM" />
+        </ButtonContainer>
       </Wrapper>
     );
   }

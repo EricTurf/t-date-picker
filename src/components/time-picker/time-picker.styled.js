@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { width } from 'window-size';
+import styled, { css } from 'styled-components';
+import { Button } from '../button';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -8,6 +8,34 @@ export const Wrapper = styled.div`
   align-items: center;
   margin-top: 5px;
   width: 100%;
+`;
+
+const TIME_BUTTON_COLORS = {
+  active: 'rgba(0, 217, 198,1)',
+  normal: 'rgba(97, 104, 143,1)'
+};
+
+const buttonCss = css`
+  height: 30px;
+  width: 40px;
+
+  font-weight: bold;
+`;
+export const AMButton = styled(Button)`
+  background-color: ${({ active }) =>
+    active ? TIME_BUTTON_COLORS.active : TIME_BUTTON_COLORS.normal};
+  ${buttonCss};
+`;
+export const PMButton = styled(Button)`
+  background-color: ${({ active }) =>
+    active ? TIME_BUTTON_COLORS.active : TIME_BUTTON_COLORS.normal};
+  ${buttonCss};
+`;
+export const ButtonContainer = styled.div`
+  display: flex;
+  border-radius: 4px;
+
+  overflow: hidden;
 `;
 
 export const Time = styled.input`
