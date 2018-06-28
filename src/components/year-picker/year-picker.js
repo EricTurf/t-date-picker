@@ -8,11 +8,11 @@ import { YearDropdown } from './year-picker.styled.js';
 
 export default class YearPicker extends React.Component {
   getItems = () => {
-    const { date } = this.props;
+    const { today } = this.props;
 
     return Array(25)
       .fill(0)
-      .map((_, i) => format(setYear(date, getYear(date) + i), 'YYYY'));
+      .map((_, i) => format(setYear(today, getYear(today) + i), 'YYYY'));
   };
 
   render() {

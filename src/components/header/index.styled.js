@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styled, { css } from 'styled-components';
 
 export const Main = styled.div`
@@ -12,6 +10,7 @@ export const MonthContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0px 10px 0px 10px;
 `;
 
 export const YearContainer = styled.div`
@@ -20,19 +19,23 @@ export const YearContainer = styled.div`
 `;
 
 export const Header = styled.h2`
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
+  font-family: 'Roboto', sans-serif;
   margin: 0;
+  font-size: 14px;
+  color: white;
 `;
 
 const arrowCSS = css`
   transition: all 0.5s;
-  border: solid black;
+  border: solid rgb(144, 144, 144);
   border-width: 0 2px 2px 0;
   display: inline-block;
-  padding: 4px;
+  padding: 2px;
   margin: 10px;
   &:hover {
     cursor: pointer;
-    border-color: red;
+    border-color: rgb(120, 120, 120);
   }
 `;
 

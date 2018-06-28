@@ -7,11 +7,15 @@ export const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-left: 5px;
   background-color: rgb(33, 38, 41);
 `;
 
 export const Value = styled.h2`
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
+  font-family: 'Roboto', sans-serif;
   color: white;
+  font-size: 20px;
   font-weight: normal;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -39,7 +43,7 @@ export const ArrowContainer = styled.div`
 
 export const Arrow = styled.i`
   position: absolute;
-  right: 7px;
+  right: 10px;
   transition: all 0.3s;
   border: solid white;
   border-width: 0 2px 2px 0;
@@ -49,13 +53,15 @@ export const Arrow = styled.i`
   transform: ${({ open }) => (open ? 'rotate(-135deg)' : 'rotate(45deg)')};
 
   &:hover {
-    border: solid red;
+    border: solid rgb(175, 163, 175);
     border-width: 0 2px 2px 0;
     cursor: pointer;
   }
 `;
 
 export const Item = styled.li`
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
+  font-family: 'Roboto', sans-serif;
   height: 40px;
   text-align: center;
   color: #000;

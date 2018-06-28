@@ -11,4 +11,5 @@ export const Main = styled.div`
 export const MonthDropdown = styled(Dropdown)`
   width: 160px;
   border-top-left-radius: 6px;
+  background-color: rgb(35, 41, 45);
 `;

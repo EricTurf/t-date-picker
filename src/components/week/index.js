@@ -5,10 +5,16 @@ import { Main } from './index.styled';
 
 export default class Week extends React.Component {
   parseWeek = () => {
-    const { week, onDateSelect } = this.props;
+    const { week, onDateSelect, date, selectedDate } = this.props;
 
     return week.map(day => (
-      <Day onDateSelect={onDateSelect} key={day} day={day} />
+      <Day
+        date={date}
+        selectedDate={selectedDate}
+        onDateSelect={onDateSelect}
+        key={day}
+        day={day}
+      />
     ));
   };
   render() {

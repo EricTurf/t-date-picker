@@ -1,7 +1,6 @@
 import React from 'react';
 import format from 'date-fns/format';
 
-import { YearPicker } from '../year-picker';
 import addMonths from 'date-fns/add_months';
 import subMonths from 'date-fns/sub_months';
 import getMonth from 'date-fns/get_month';
@@ -14,8 +13,7 @@ import {
   MonthContainer,
   Header,
   BackArrow,
-  ForwardArrow,
-  YearContainer
+  ForwardArrow
 } from './index.styled';
 
 export default class CalendarHeader extends React.Component {
@@ -37,7 +35,7 @@ export default class CalendarHeader extends React.Component {
   };
 
   render() {
-    const { today, date, onYearChange, onMonthChange } = this.props;
+    const { date } = this.props;
 
     return (
       <Main>

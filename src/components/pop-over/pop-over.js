@@ -11,7 +11,13 @@ import { MonthPicker } from '../month-picker';
 
 import { Calendar } from '../calendar';
 
-import { Main, Footer, Header, ChildContainer } from './pop-over.styled';
+import {
+  Main,
+  Footer,
+  Header,
+  CancelButton,
+  ConfirmButton
+} from './pop-over.styled';
 
 export default class Popover extends React.Component {
   static defaultProps = { background: 'white' };
@@ -20,16 +26,22 @@ export default class Popover extends React.Component {
     today: Date.now(),
     year: getYear(Date.now()),
     month: getMonth(Date.now()),
-    day: getDate(Date.now())
+    day: getDate(Date.now()),
+    selectedDate: null
   };
 
-  onDateSelect = date => (console.log('clicked'), this.props.onSelect(date));
+  onConfirm = () => {
+    this.props.toggleCalendar();
+    this.props.onSelect(this.state.selectedDate);
+  };
+
+  onDateSelect = selectedDate => this.setState({ selectedDate });
 
   onYearChange = year => this.setState({ year });
   onMonthChange = month => this.setState({ month });
 
   render() {
-    const { today, year, month, day } = this.state;
+    const { today, year, month, day, selectedDate } = this.state;
 
     const date = parse(`${year}-${month + 1}-${day}`);
 
@@ -49,8 +61,12 @@ export default class Popover extends React.Component {
           onMonthChange={this.onMonthChange}
           onYearChange={this.onYearChange}
           onDateSelect={this.onDateSelect}
+          selectedDate={selectedDate}
         />
-        <Footer />
+        <Footer>
+          <CancelButton onClick={this.props.toggleCalendar} />
+          <ConfirmButton onClick={this.onConfirm} />
+        </Footer>
       </Main>
     );
   }
