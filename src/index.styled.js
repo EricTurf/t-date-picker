@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
-export const StyledInput = styled.div`
+export const DateField = styled.div`
   display: flex;
+  position: relative;
   justify-content: space-between;
   background-color: none;
   border-bottom: ${({ isOpen }) =>
     isOpen ? 'solid 1px black' : 'solid 1px transparent'};
   transition: all 0.3s;
   height: 20px;
-  min-width: 250px;
+  width: 250px;
+
   &:hover {
     cursor: pointer;
     border-bottom: solid 1px black;

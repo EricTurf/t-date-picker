@@ -36,7 +36,37 @@ storiesOf('DatePicker', module)
         backgroundColor: 'coral'
       }}
     >
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div>
+        <DatePicker
+          value={Date.now()}
+          dateFormat={'YYYY-D-MM'}
+          onSelect={action('Date was chosen')}
+        />
+        <DatePicker
+          value={Date.now()}
+          dateFormat={'YYYY-D-MM'}
+          onSelect={action('Date was chosen')}
+        />
+        <DatePicker
+          value={Date.now()}
+          dateFormat={'YYYY-D-MM'}
+          onSelect={action('Date was chosen')}
+        />
+        <DatePicker
+          value={Date.now()}
+          dateFormat={'YYYY-D-MM'}
+          onSelect={action('Date was chosen')}
+        />
+        <DatePicker
+          value={Date.now()}
+          dateFormat={'YYYY-D-MM'}
+          onSelect={action('Date was chosen')}
+        />
+        <DatePicker
+          value={Date.now()}
+          dateFormat={'YYYY-D-MM'}
+          onSelect={action('Date was chosen')}
+        />
         <DatePicker
           value={Date.now()}
           dateFormat={'YYYY-D-MM'}

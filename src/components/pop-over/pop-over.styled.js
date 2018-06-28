@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Button } from '../button';
 
 export const Main = styled.div`
-  position: fixed;
+  position: absolute;
   display: flex;
   top: 30px;
   flex-direction: column;
@@ -16,6 +16,7 @@ export const Main = styled.div`
   height: 300px;
   margin-top: 15px;
   border-radius: 6px;
+  z-index: 3;
 
   &:before {
     content: '';

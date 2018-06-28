@@ -1,5 +1,6 @@
 webpack.prod.js
 yarn.*
+yarn-error.log
 .prettierrc
 .gitignore
 .babelrc
