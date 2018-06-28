@@ -16,7 +16,7 @@ export const StyledInput = styled.div`
 `;
 
 export const Main = styled.div`
-  position: fixed;
+  position: relative;
 `;
 
 export const Value = styled.p`
