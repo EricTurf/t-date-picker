@@ -1,5 +1,5 @@
 {
-  "name": "t-date-picker",
+  "name": "t-react-date-picker",
   "version": "1.0.0",
   "description": "Date picker for React",
   "main": "./build/bundle.js",
