@@ -1,10 +1,10 @@
 {
   "name": "t-react-date-picker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Date picker for React",
-  "main": "./build/bundle.js",
+  "main": "build/bundle.js",
   "scripts": {
-    "prepublish": "yarn build",
+    "prepublishOnly": "yarn build",
     "precommit": "pretty-quick",
     "test": "jest",
     "build": "webpack --progress --config webpack.prod.js --colors",
