@@ -1,38 +1,55 @@
 import React from 'react';
 
+import getMonth from 'date-fns/get_month';
+import getDate from 'date-fns/get_date';
+import getYear from 'date-fns/get_year';
+import parse from 'date-fns/parse';
+
 import { ButtonBar } from '../button-bar';
+import { YearPicker } from '../year-picker';
+import { MonthPicker } from '../month-picker';
 
 import { Calendar } from '../calendar';
-import { TimePicker } from '../time-picker';
 
 import { Main, Footer, Header, ChildContainer } from './pop-over.styled';
 
 export default class Popover extends React.Component {
-  state = { mode: 'DATE' };
   static defaultProps = { background: 'white' };
 
-  onModeChange = mode => mode !== this.state.mode && this.setState({ mode });
+  state = {
+    today: Date.now(),
+    year: getYear(Date.now()),
+    month: getMonth(Date.now()),
+    day: getDate(Date.now())
+  };
+
+  onDateSelect = date => (console.log('clicked'), this.props.onSelect(date));
+
+  onYearChange = year => this.setState({ year });
+  onMonthChange = month => this.setState({ month });
 
   render() {
-    const { mode } = this.state;
+    const { today, year, month, day } = this.state;
+
+    const date = parse(`${year}-${month + 1}-${day}`);
 
     return (
       <Main background={this.props.background}>
         <Header>
-          <ButtonBar
-            mode={mode}
-            buttons={[
-              {
-                label: 'Date',
-                onClick: () => this.onModeChange('DATE')
-              },
-              { label: 'Time', onClick: () => this.onModeChange('TIME') }
-            ]}
+          <MonthPicker date={date} onMonthChange={this.onMonthChange} />
+          <YearPicker
+            onYearChange={this.onYearChange}
+            today={today}
+            date={date}
           />
         </Header>
-        <ChildContainer>
-          {mode === 'DATE' ? <Calendar /> : <TimePicker />}
-        </ChildContainer>
+        <Calendar
+          date={date}
+          today={today}
+          onMonthChange={this.onMonthChange}
+          onYearChange={this.onYearChange}
+          onDateSelect={this.onDateSelect}
+        />
         <Footer />
       </Main>
     );

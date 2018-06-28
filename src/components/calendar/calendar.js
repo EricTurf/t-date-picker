@@ -32,35 +32,32 @@ const buildMonth = (today, onDateSelect) => {
 };
 
 export default class Calandar extends React.Component {
-  state = {
-    today: Date.now(),
-    year: getYear(Date.now()),
-    month: getMonth(Date.now()),
-    day: getDate(Date.now())
-  };
-
   onDateSelect = date => (console.log('clicked'), this.props.onSelect(date));
 
   onYearChange = year => this.setState({ year });
   onMonthChange = month => this.setState({ month });
 
   render() {
-    const { today, year, month, day } = this.state;
-
-    const date = parse(`${year}-${month + 1}-${day}`);
+    const {
+      today,
+      date,
+      onMonthChange,
+      onYearChange,
+      onDateSelect
+    } = this.props;
 
     return (
       <Wrapper>
         <Header
           date={date}
-          onMonthChange={this.onMonthChange}
-          onYearChange={this.onYearChange}
+          onMonthChange={onMonthChange}
+          onYearChange={onYearChange}
           today={today}
         />
 
         {/* <Calendar/> */}
         <WeekDayContainer>{weekdays.map(buildWeekday)}</WeekDayContainer>
-        {buildMonth(date, this.onDateSelect)}
+        {buildMonth(date, onDateSelect)}
         {/* <TimePicker/> */}
       </Wrapper>
     );

@@ -7,12 +7,12 @@ storiesOf('Default', module).add('with text', () => {
   return (
     <div
       style={{
-        width: '100vw',
+        width: '100%',
         height: '100vh',
         backgroundColor: 'coral'
       }}
     >
-      <div style={{ marginLeft: '400px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <DatePicker />
       </div>
     </div>

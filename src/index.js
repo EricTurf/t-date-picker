@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Calendar } from './components/calendar';
-import { TimePicker } from './components/time-picker';
+
 import { Popover } from './components/pop-over';
 
 import { StyledInput } from './index.styled';

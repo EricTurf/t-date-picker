@@ -46,9 +46,6 @@ export default class CalendarHeader extends React.Component {
           <Header>{format(date, 'MMMM')}</Header>
           <ForwardArrow onClick={this.handleForward} />
         </MonthContainer>
-        <YearContainer>
-          <YearPicker onYearChange={onYearChange} today={today} date={date} />
-        </YearContainer>
       </Main>
     );
   }
