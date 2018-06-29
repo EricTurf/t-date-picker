@@ -16,7 +16,7 @@ const buildWeekday = (weekday, i) => (
   <WeekDay key={`${weekday}-${i}`}>{weekday}</WeekDay>
 );
 
-const buildMonth = (date, selectedDate, onDateSelect) => {
+const buildMonth = (date, selectedDate, onDaySelect) => {
   const firstDay = startOfWeek(startOfMonth(date));
 
   const month = Array(35)
@@ -27,7 +27,7 @@ const buildMonth = (date, selectedDate, onDateSelect) => {
     <Month
       selectedDate={selectedDate}
       date={date}
-      onDateSelect={onDateSelect}
+      onDaySelect={onDaySelect}
       month={month}
     />
   );
@@ -40,7 +40,7 @@ export default class Calandar extends React.Component {
       date,
       onMonthChange,
       onYearChange,
-      onDateSelect,
+      onDaySelect,
       selectedDate
     } = this.props;
 
@@ -55,7 +55,7 @@ export default class Calandar extends React.Component {
 
         {/* <Calendar/> */}
         <WeekDayContainer>{weekdays.map(buildWeekday)}</WeekDayContainer>
-        {buildMonth(date, selectedDate, onDateSelect)}
+        {buildMonth(date, selectedDate, onDaySelect)}
         {/* <TimePicker/> */}
       </Wrapper>
     );

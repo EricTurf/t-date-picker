@@ -3,11 +3,12 @@ import React from 'react';
 import { Main } from './index.styled';
 import format from 'date-fns/format';
 import getMonth from 'date-fns/get_month';
+import getDate from 'date-fns/get_date';
 
 export default class Day extends React.Component {
   state = { isHovered: false };
   render() {
-    const { day, onDateSelect, date, selectedDate } = this.props;
+    const { day, onDaySelect, date, selectedDate } = this.props;
 
     const isNotCurrentMonth = getMonth(date) !== getMonth(day);
 
@@ -21,7 +22,7 @@ export default class Day extends React.Component {
           !isNotCurrentMonth &&
           format(selectedDate, 'YYYY-MM-DD') === format(day, 'YYYY-MM-DD')
         }
-        onClick={() => onDateSelect(day)}
+        onClick={() => onDaySelect(getDate(day))}
       >
         {isNotCurrentMonth
           ? ''

@@ -5,7 +5,6 @@ import getDate from 'date-fns/get_date';
 import getYear from 'date-fns/get_year';
 import parse from 'date-fns/parse';
 
-import { ButtonBar } from '../button-bar';
 import { YearPicker } from '../year-picker';
 import { MonthPicker } from '../month-picker';
 
@@ -27,26 +26,43 @@ export default class Popover extends React.Component {
     year: getYear(Date.now()),
     month: getMonth(Date.now()),
     day: getDate(Date.now()),
-    selectedDate: null
+    selectedDate: this.props.value
+  };
+
+  componentDidMount = () => {
+    const { value } = this.props;
+
+    const date = value || Date.now();
+
+    this.setState({
+      today: Date.now(),
+      year: getYear(date),
+      month: getMonth(date),
+      day: getDate(date),
+      selectedDate: value
+    });
   };
 
   onConfirm = () => {
+    const { year, month, day } = this.state;
+
     this.props.toggleCalendar();
-    this.props.onSelect(this.state.selectedDate);
+    this.props.onSelect(parse(`${year}-${month + 1}-${day}`));
   };
 
-  onDateSelect = selectedDate => this.setState({ selectedDate });
+  onDaySelect = day => this.setState({ day });
 
   onYearChange = year => this.setState({ year });
+
   onMonthChange = month => this.setState({ month });
 
   render() {
-    const { today, year, month, day, selectedDate } = this.state;
+    const { today, year, month, day } = this.state;
 
     const date = parse(`${year}-${month + 1}-${day}`);
 
     return (
-      <Main background={this.props.background}>
+      <Main>
         <Header>
           <MonthPicker date={date} onMonthChange={this.onMonthChange} />
           <YearPicker
@@ -58,10 +74,10 @@ export default class Popover extends React.Component {
         <Calendar
           date={date}
           today={today}
+          selectedDate={date}
           onMonthChange={this.onMonthChange}
           onYearChange={this.onYearChange}
-          onDateSelect={this.onDateSelect}
-          selectedDate={selectedDate}
+          onDaySelect={this.onDaySelect}
         />
         <Footer>
           <CancelButton onClick={this.props.toggleCalendar} />
