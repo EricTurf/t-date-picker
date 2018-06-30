@@ -9,23 +9,20 @@ import { DateField, Main, Value } from './index.styled';
 export default class DatePicker extends React.Component {
   state = { showCalendar: false };
 
-  static defaultProps = { background: 'white' };
+  static defaultProps = {
+    dateFormat: 'ddd Do [of] MMMM YYYY'
+  };
 
   togglePicker = () => this.setState({ showPicker: !this.state.showPicker });
 
   render() {
-    const { onSelect, className } = this.props;
+    const { onSelect, className, value, dateFormat } = this.props;
 
     return (
       <Main className={className}>
         <DateField isOpen={this.state.showPicker} onClick={this.togglePicker}>
           <Value>
-            {this.props.value
-              ? format(
-                  this.props.value,
-                  this.props.dateFormat || 'dddd Do [of] MMMM YYYY'
-                )
-              : 'Click me to select a date'}
+            {value ? format(value, dateFormat) : 'Click me to select a date'}
           </Value>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -39,8 +36,8 @@ export default class DatePicker extends React.Component {
         </DateField>
         {this.state.showPicker && (
           <Popover
+            value={value}
             toggleCalendar={this.togglePicker}
-            background={this.props.background}
             onSelect={onSelect}
           />
         )}
